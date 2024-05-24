@@ -1,0 +1,215 @@
+# Visão Geral do Projeto
+
+Este projeto é uma aplicação que tem como objetivo simular uma lista de contato de clientes com seus endereços. Nele você poderá fazer login,
+visualizar e cadastrar clientes, visualizar e cadastrar endereços e baixar todos os dados. Siga as etapas abaixo para executar o projeto:
+
+1. Extraia o arquivo zip do projeto e navegue até a pasta extraída no terminal.
+
+2. Instale as dependências necessárias executando o seguinte comando no terminal:
+
+  ```
+  npm install
+  ```
+
+  OBS: Utilizei o Node.js v18.19.1 e o npm v10.2.4 para desenvolver o projeto, então recomendo que você use essas versões para 
+  garantir que o projeto seja executado corretamente.
+
+3. Inicie o servidor executando o seguinte comando:
+
+  ```
+  npm run dev
+  ```
+
+4. Após iniciar o servidor, você poderá acessar a aplicação em seu navegador usando o seguinte URL:
+
+  ```
+  http://localhost:5173/
+  ```
+
+5. Para acessar a aplicação, você pode usar as seguintes credenciais:
+
+  ```
+  Usuário: admin
+  Senha: admin
+  ```
+
+  OBS: essas credenciais sempre estarão disponíveis, mesmo que você as exclua ou altere, basta atualizar a página.
+
+Certifique-se de seguir todas as etapas acima para garantir que o projeto seja executado corretamente.
+
+
+# Estrutura do Projeto
+
+O projeto esta divido em várias pastas dentro da pasta raiz. Aqui está uma visão geral de cada pasta:
+
+- **assets**: Contém arquivos de imagem e fonte.
+- **components**: Contém componentes React reutilizáveis.
+- **context**: Contém os contextos da aplicação.
+- **pages**: Contém as páginas da aplicação.
+- **routes**: Contém as rotas da aplicação.
+- **scss**: Contém arquivos de estilo customizáveis SCSS do Bootstrap.
+- **utils**: Contém funções utilitárias reutilizáveis (alasql, crypto).
+- **App.jsx**: Arquivo principal da aplicação.
+- **main.jsx**: Arquivo de inicialização da aplicação.
+
+# Estrutura de Dados
+
+A aplicação possui um banco de dados, AgroSysDB, que é salvo no LOCAL STORAGE e três entidades principais: Users, Clients e Addresses. Esses dados são construidos com a 
+biblioteca alasql, que serve como um banco SQL tradicional dentro do browser. Aqui está uma visão geral de cada entidade:
+
+## **Users**
+
+Armazena informações sobre os usuários da aplicação, que podem fazer login através dela. Eles possuem os seguintes campos:
+
+- **id**: Identificador único do usuário.
+- **username**: Nome de usuário do usuário.
+- **password**: Senha do usuário, que é criptografada com a biblioteca crypto.
+
+## **Clients**
+
+Armazena informações sobre os clientes da aplicação. Eles possuem os seguintes campos:
+
+- **id**: Identificador único do cliente.
+- **full_name**: Nome completo do cliente.
+- **cpf**: CPF do cliente.
+- **birthdate**: Data de nascimento do cliente.
+- **telephone**: Telefone do cliente.
+- **cellphone**: Celular do cliente.
+
+## **Addresses**
+
+Armazena informações sobre os endereços dos clientes da aplicação. Eles possuem os seguintes campos:
+
+- **id**: Identificador único do endereço.
+- **client_id**: Identificador do cliente associado ao endereço.
+- **zip_code**: CEP do endereço.
+- **street**: Rua do endereço.
+- **neighborhood**: Bairro do endereço.
+- **city**: Cidade do endereço.
+- **state**: Estado do endereço.
+- **country**: País do endereço.
+- **favorite**: Indica se o endereço é favorito do cliente.
+
+# Funcionalidades da Aplicação
+
+A aplicação possui várias funcionalidades que permitem que os usuários interajam com ela. Aqui está uma visão geral de cada funcionalidade:
+
+## **Login**
+
+Os usuários podem fazer login na aplicação usando seu nome de usuário e senha. Se as credenciais estiverem corretas, eles serão 
+redirecionados para a página inicial da aplicação.
+
+## **Cadastro** 
+
+Os usuários podem se cadastrar na aplicação. Eles precisam fornecer um nome de usuário e senha para se cadastrar. Se o nome de usuário
+já estiver em uso, eles não poderão se cadastrar.
+
+## **Logout**
+
+Os usuários podem fazer logout da aplicação a qualquer momento. Quando eles fazem logout, eles são redirecionados para a página de login.
+
+## **Visualizar Clientes**
+
+Os usuários podem visualizar todos os clientes cadastrados na aplicação. Eles podem ver o nome completo, CPF, data de nascimento, 
+telefone e celular de cada cliente.
+
+## **Cadastrar Clientes**
+
+Os usuários podem cadastrar novos clientes na aplicação. Eles precisam fornecer um nome completo, CPF, data de nascimento, telefone 
+e celular para cadastrar um novo cliente. Caso o CPF já esteja cadastrado, o usuário não poderá cadastrar o cliente.
+
+## **Excluir Clientes**
+
+Os usuários podem excluir clientes cadastrados na aplicação. Eles podem fazer isso clicando no botão de excluir ao lado do cliente. 
+Quando um cliente é excluído, todos os endereços associados a ele também são excluídos.
+
+## **Visualizar Endereços**
+
+Os usuários podem visualizar todos os endereços cadastrados na aplicação. Eles podem ver o CEP, rua, bairro, cidade, estado, país e se o endereço 
+é favorito de cada endereço.
+
+## **Cadastrar Endereços**
+
+Os usuários podem cadastrar novos endereços na aplicação. Eles precisam fornecer um CEP, rua, bairro, cidade, estado, país e se o endereço é 
+favorito para cadastrar um novo endereço.
+
+## **Excluir Endereços**
+
+Os usuários podem excluir endereços cadastrados na aplicação. Eles podem fazer isso clicando no botão de excluir ao lado do endereço.
+
+## **Favoritar Endereço**
+
+Os usuários podem favoritar um endereço na aplicação. Eles podem fazer isso clicando no botão de favoritar ao lado do endereço. Quando um
+endereço é favoritado, ele é destacado na lista de endereços.
+
+## **Baixar Dados**
+
+Os usuários podem baixar todos os dados da aplicação em um arquivo JSON. O arquivo JSON contém todas as informações dos usuário, clientes e 
+endereços cadastrados na aplicação.
+
+## **Inserir Dados Iniciais**
+
+Os usuários podem inserir dados iniciais na aplicação na página de Login, clicando no ícone de engrenagem e selecionando a um arquivo JSON 
+com o seguinte formato:
+
+```
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "full_name": "João da Silva",
+      "cpf": "123.456.789-00",
+      "birthdate": "01/01/1990",
+      "telephone": "(11) 1234-5678",
+      "cellphone": "(11) 98765-4321"
+    }
+  ],
+  "addresses": [
+    {
+      "id": 1,
+      "client_id": 1,
+      "zip_code": "12345-678",
+      "street": "Rua da Paz",
+      "neighborhood": "Centro",
+      "city": "São Paulo",
+      "state": "SP",
+      "country": "Brasil",
+      "favorite": true
+    }
+  ]
+}
+```
+
+OBS: Caso você esteja tendo problemas com o arquivo JSON, você pode usar o arquivo `InitialData.json` na pasta raiz do projeto.
+
+# Road Map
+
+Aqui estão algumas funcionalidades que podem ser adicionadas ao projeto no futuro:
+
+- **Atualizar Clientes/Endereços**: Permitir que os usuários atualizem as informações dos clientes e endereços cadastrados na aplicação.
+- **Pesquisar Clientes/Endereços**: Permitir que os usuários pesquisem clientes e endereços cadastrados na aplicação.
+- **Ordenar Clientes/Clientes**: Permitir que os usuários ordenem os clientes e endereços cadastrados na aplicação.
+- **Filtrar Clientes/Endereços**: Permitir que os usuários filtrem os clientes e endereços cadastrados na aplicação.
+- **Paginação de Tabelas**: Adicionar paginação para os clientes e endereços cadastrados na aplicação.
+- **Validação de Dados**: Adicionar validação de CPF, CEP, Telefone e Celular ao cadastrar clientes e endereços na aplicação.
+- **Validação de Formulários**: Adicionar yup para validação de formulários para garantir que os usuários preencham 
+todos os campos necessários e do jeito certo.
+- **Autenticação de Usuário**: Adicionar autenticação de usuário para proteger as rotas da aplicação.
+- **Testes Unitários e End-to-End**: Adicionar testes para garantir que o código da aplicação está funcionando corretamente.
+
+# Tecnologias Utilizadas
+
+- JavaScript
+- Node.js
+- React
+- Bootstrap
+- alasql
+- crypto
+

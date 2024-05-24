@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "full_name": "João da Silva",
+      "cpf": "123.456.789-00",
+      "birthdate": "01/01/1990",
+      "telephone": "(11) 1234-5678",
+      "cellphone": "(11) 98765-4321"
+    }
+  ],
+  "addresses": [
+    {
+      "id": 1,
+      "client_id": 1,
+      "zip_code": "12345-678",
+      "street": "Rua da Paz",
+      "neighborhood": "Centro",
+      "city": "São Paulo",
+      "state": "SP",
+      "country": "Brasil",
+      "favorite": true
+    }
+  ]
+}
